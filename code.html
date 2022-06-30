@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <title>c0untr: A Coding Project By Adam Shively</title>
+    <!-- ==== Required meta tags ==== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- ==== Bootstrap ==== CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="css/site.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- ==== Nav Section ==== -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand logofont" href="#"><img src="img/smalllogo.svg"  class=" d-inline-block align-text-center px-2"
+                alt="Adam's logo" height="24">c0untr</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/app.html">The App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="/adamshively.netlify.app">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="/github.com/adamshively">Git Repo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ==== Main Section ==== -->
+    <main class="flex-shrink-0">
+        <div class="container py-5 px-5 mt-5">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col-lg-7">
+                    <h3 class="border-1 border-bottom mb-3">The Code for <span class="logofont">c0untr</span></h3>
+                    <pre class="line-numbers"><code class="language-javascript">
+                        //Get the user input values.
+                        function getValues() {
+
+                            //Get start value that the user entered and parse it to an integer.
+                            let start = document.getElementById("start").value;
+                            start = parseInt(start);
+
+                            //Get end value that the user entered and parse it to an integer.
+                            let end = document.getElementById("end").value;
+                            end = parseInt(end);
+
+                            //Make sure user entered integers.
+                            let isNumber = Number.isInteger(start) && Number.isInteger(end)
+
+                            //Make sure user entries are within range 0-100 (inclusive).
+                            let isPositive = start >=0 && end >=0 && end <= 100;
+
+                            //Make sure user entered a valid range.
+                            let isValidRange = start < end;
+
+                            //Make sure user entries are valid.
+                            if (isNumber && isPositive && isValidRange) {
+
+                                let numbers = generateValues(start, end);
+                                displayValues(numbers);
+                            }
+                            else {
+
+                                //Show the alert box.
+                                alert("Please make sure your entries are valid.");
+                            }
+                        }
+
+                        //Generate values within range entered by the user.
+                        function generateValues(start, end) {
+
+                            let numbers= []
+
+                            //Push all numbers (inclusive) from start to end.
+                            for (let i = start; i <= end; i++) {
+
+                                //Push all numbers to array.
+                                numbers.push(i);
+                            }
+
+                            return numbers;
+                        }
+
+                        //Display values within range entered by the user.
+                        function displayValues(numbers) {
+                            
+                            let templateValues = "";
+                            
+                            for (let i = 0; i < numbers.length; i++) {
+
+                                let number = numbers[i];
+                                let cssClass = "odd";
+
+                                //Number is a multiple of ten.
+                                if (number % 10 == 0) {
+                                    cssClass = "even multiple-of-ten";
+                                }
+                                //Number is even.
+                                else if (number % 2 == 0) {
+                                    cssClass = "even";
+                                }
+
+                                //Add template literals to string.
+                                //Prism does not properly display template literals,
+                                //refer to git repo to view.
+                                templateValues += `<tr><td class="${cssClass}">${number}</td></tr>`;
+                            }
+                            //Write values to the page.
+                            document.getElementById("results").innerHTML = templateValues;
+                        }
+                    </code></pre>
+                </div>
+                <div class="col-lg-5">
+                    <h3 class="border-1 border-bottom mb-3">The Javascript Functions</h3>
+                    <h5 >The getValues Function:</h5>
+                    <p> This function gets the user's entries and initializes them to "start"
+                        and "end" then parses them to integers. Entries are then checked for validity
+                        using "isNumber", "isPositive", and "isValidRange". If the entries are valid
+                        then a function call of "generateValues" with "start" and "end" as arguements 
+                        is made and initialized to "numbers". The "displayValues" function is called with
+                        "numbers" passed as its arguement. If the user's entries were invalid, an alert 
+                        box is displayed telling the user to make sure the entries are valid.
+                    </p>
+                    <h5 >The generateValues Function:</h5>
+                    <p>This function generates values within range entered by the user and
+                        pushes them to an array. It initializes the "numbers" array, loops through values 
+                        within range entered by the user and pushes them to that array, and 
+                        then returns that array.
+                    </p>
+                    <h5 >The displayValues Function:</h5>
+                    <p>This function displays the values within range entered by the user. The string 
+                        "templateValues" initialized and is used to collect values to be displayed. 
+                        The parameter "numbers" is looped through and its elements are intialized 
+                        to "number" and "cssClass" is initalized with each loop. If "number" is a 
+                        multiple of ten, "cssClass" is set to "even multiple-of-ten". If "number"
+                        is even, "cssClass" is set to "even". Otherwise, "cssClass" remains set to "odd".
+                        These values are added to "templateValues". Follwoing the loop, "templateValues" 
+                        is written to the page.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="footer mt-auto sticky-footer bg-dark">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-lg-3 py-2">
+                <div class="col text-light d-flex align-items-center order-last order-lg-first">
+                    <div><span class="text-muted">&copy;2022</span> Adam Shively | adammshively89@gmail.com</div>
+                </div>
+                <div class="col d-flex align-items-center justify-content-start justify-content-lg-center py-2">
+                    <img src="img/biglogo.svg" alt="Adam's logo" height="24">
+                </div>
+                <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
+                    <div class="row ps-1">
+                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        </div>
+                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                        </div>
+                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                        </div>
+                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ==== Bootstrap JS ==== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
+    <script src="js/prism.js"></script>
+    <script>
+        Prism.plugins.NormalizeWhitespace.setDefaults({
+            'remove-trailing': true,
+            'remove-indent': true,
+            'left-trim': true,
+            'right-trim': true
+            })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+main>.container {
+    padding: 60px 15px 0;
+    margin-bottom: 5rem;
+}
+
+.sticky-footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+:root {
+    --primary: #ff914d;
+    --secondary: rgb(222, 46, 33);
+    --dark-color: rgb(66, 64, 64);
+    --white-color: rgb(236, 233, 233);
+}
+
+body {
+    background-color:rgb(57, 61, 66);
+    color: #FFFFFF80;
+    /* rgba(0, 0, 0, 0.1);
+    rgb(57, 61, 66);
+    
+    0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-color: rgba(250, 250, 250, 0.15);
+      color: #707070;
+      color: #4c4d4d;
+    */
+    font-family: "Poppins", sans-serif;
+
+
+    font-weight: 500;
+    font-size: larger;
+}
+
+.nav {
+    background-color: var(--dark-color);
+}
+
+footer {
+    background-color: var(--dark-color);
+    padding-left: rem;
+    padding-right: .2rem;
+}
+
+footer .social>a {
+    color: var(--white-color);
+    opacity: 0.75;
+}
+
+footer .social>a:hover {
+    opacity: 0.9;
+    color: var(--primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary);
+}
+
+.bsicon {
+    color: purple;
+}
+
+.jsicon {
+    color: rgb(226, 211, 4);
+}
+
+.cssicon {
+    color: var(--secondary);
+}
+
+.htmlicon {
+    color: orangered;
+}
+
+.btn {
+    background-color: var(--primary);
+}
+
+.checklist >li {
+    color: var(--primary);
+}
+
+.logofont {
+    font-family: 'Dosis', sans-serif;
+    font-size: 115%;
+}
+
+.even {
+    color: blue;
+}
+
+.odd {
+    color:red;
+}
+
+.multiple-of-ten {
+    font-weight: 1000;
+    font-style: italic;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+white-space: pre-wrap;
+word-break: break-all;
+word-wrap: break-word;
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+    .border-start {
+        color: blue;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .border-start {
+        color: blue;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .border-start {
+        background-color: blue;
+        color: blue;
+    }
+}
