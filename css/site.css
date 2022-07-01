@@ -18,21 +18,9 @@ main>.container {
 }
 
 body {
-    
     font-family: 'Poppins', sans-serif;
     background-color:rgb(57, 61, 66);
     color: #FFFFFF80;
-    /* rgba(0, 0, 0, 0.1);
-    rgb(57, 61, 66);
-    
-    0px 0px 15px rgba(0, 0, 0, 0.1);
-    border-color: rgba(250, 250, 250, 0.15);
-      color: #707070;
-      color: #4c4d4d;
-    */
-    font-family: "Poppins", sans-serif;
-
-
     font-weight: 500;
     font-size: larger;
 }
@@ -110,31 +98,4 @@ pre[class*="language-"] {
 white-space: pre-wrap;
 word-break: break-all;
 word-wrap: break-word;
-}
-
-/* Extra Small Devices, Phones */ 
-@media only screen and (min-width : 480px) {
-    .border-start {
-        color: blue;
-    }
-}
-
-/* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
-    .border-start {
-        color: blue;
-    }
-}
-
-/* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
-
-}
-
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-    .border-start {
-        background-color: blue;
-        color: blue;
-    }
 }
