@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>c0untr: A Coding Project By Adam Shively</title>
+    <title>Madam, I'm AdaM: A Coding Project By Adam Shively</title>
     <!-- ==== Required meta tags ==== -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,9 +13,10 @@
     <link href="css/site.css" rel="stylesheet">
     <link href="css/prism.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -23,7 +24,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand logofont" href="#"><img src="img/smalllogo.svg"  class=" d-inline-block align-text-center px-2"
-                alt="Adam's logo" height="24">c0untr</a>
+                alt="Adam's logo" height="24">Madam, I'm AdaM</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -54,82 +55,78 @@
         <div class="container py-5 px-5 mt-5">
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-7">
-                    <h3 class="border-1 border-bottom mb-3">The Code for <span class="logofont">c0untr</span></h3>
+                    <h3 class="border-1 border-bottom mb-3">The Code for <span class="logofont">Madam, I'm AdaM</span></h3>
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Get the user input values.
-                        function getValues() {
+                        //Get the user's input.
+                        function getValue() {
 
-                            //Get start value that the user entered and parse it to an integer.
-                            let start = document.getElementById("start").value;
-                            start = parseInt(start);
+                            //Get input that the user entered.
+                            let input = document.getElementById("input").value;
+                            
+                            //Remove any invalid characters using regex.
+                            let regex = /[^a-z0-9]/gi;
+                            input = input.replace(regex, "");
 
-                            //Get end value that the user entered and parse it to an integer.
-                            let end = document.getElementById("end").value;
-                            end = parseInt(end);
+                            //Make sure user entered input that can be checked.
+                            if (input.length > 0) {
 
-                            //Make sure user entered integers.
-                            let isNumber = Number.isInteger(start) && Number.isInteger(end)
+                                //Check if palindrome and get reverse.
+                                let info = isPalindrome(input);
 
-                            //Make sure user entries are within range 0-100 (inclusive).
-                            let isPositive = start >=0 && end >=0 && end <= 100;
-
-                            //Make sure user entered a valid range.
-                            let isValidRange = start < end;
-
-                            //Make sure user entries are valid.
-                            if (isNumber && isPositive && isValidRange) {
-
-                                let numbers = generateValues(start, end);
-                                displayValues(numbers);
+                                //Call function to display info.
+                                displayValue(info);
                             }
                             else {
-
                                 //Show the alert box.
-                                alert("Please make sure your entries are valid.");
+                                alert("Please input a word, phrase, or sequence to check.");
                             }
                         }
 
-                        //Generate values within range entered by the user.
-                        function generateValues(start, end) {
+                        //Check if input is a palidrome.
+                        function isPalindrome(input) {
 
-                            let numbers= []
+                            //Length of the user's input.
+                            let inputLen = input.length;
 
-                            //Push all numbers (inclusive) from start to end.
-                            for (let i = start; i <= end; i++) {
+                            if (inputLen == 1) {
 
-                                //Push all numbers to array.
-                                numbers.push(i);
+                                //Return info in a dictionary.
+                                return {isPal: true, reverse: input};
                             }
 
-                            return numbers;
+                            let reverse = "";
+
+                            //Loop through characters and add to a new string.
+                            for (let i = input.length-1; i >= 0; i--) {
+
+                                reverse += input[i];
+                            }
+
+                            //Determine if user input is a palindrome.
+                            let isPal = input.toLowerCase() == reverse.toLowerCase();
+
+                            //Return info in a dictionary.
+                            return {isPal: isPal, reverse: reverse};
                         }
 
-                        //Display values within range entered by the user.
-                        function displayValues(numbers) {
-                            
-                            let templateValues = "";
-                            
-                            for (let i = 0; i < numbers.length; i++) {
+                        //Display the results.
+                        function displayValue(info) {
 
-                                let number = numbers[i];
-                                let cssClass = "odd";
+                            //Get values from dictionary.
+                            let isPal = info.isPal;
+                            let reverse = info.reverse;
 
-                                //Number is a multiple of ten.
-                                if (number % 10 == 0) {
-                                    cssClass = "even multiple-of-ten";
-                                }
-                                //Number is even.
-                                else if (number % 2 == 0) {
-                                    cssClass = "even";
-                                }
+                            //Use ternary operatory to initialize message.
+                            message = isPal ? "Your entry is a Palindrome!" : 
+                                            "Your entry is NOT a Palindrome!";
 
-                                //Add template literals to string.
-                                //Prism does not properly display template literals,
-                                //refer to git repo to view.
-                                templateValues += `<tr><td class="${cssClass}">${number}</td></tr>`;
-                            }
-                            //Write values to the page.
-                            document.getElementById("results").innerHTML = templateValues;
+                            //Write to the page.
+                            document.getElementById("ispal").innerHTML = message;
+                            document.getElementById("info").innerHTML = `The reverse 
+                                                        of your entry is: ${reverse}`;
+
+                            //Allow display message to be displayed.
+                            document.getElementById("alert").classList.remove("invisible");
                         }
                     </code></pre>
                 </div>

@@ -1,73 +1,71 @@
-//Get the user input values.
-function getValues() {
+//Get the user's input.
+function getValue() {
 
-    //Get start value that the user entered and parse it to an integer.
-    let start = document.getElementById("start").value;
-    start = parseInt(start);
+    //Get input that the user entered.
+    let input = document.getElementById("input").value;
+    
+    //Remove any invalid characters using regex.
+    let regex = /[^a-z0-9]/gi;
+    input = input.replace(regex, "");
 
-    //Get end value that the user entered and parse it to an integer.
-    let end = document.getElementById("end").value;
-    end = parseInt(end);
+    //Make sure user entered input that can be checked.
+    if (input.length > 0) {
 
-    //Make sure user entered integers.
-    let isNumber = Number.isInteger(start) && Number.isInteger(end)
+        //Check if palindrome and get reverse.
+        let info = isPalindrome(input);
 
-    //Make sure user entries are within range 0-100 (inclusive).
-    let isPositive = start >=0 && end >=0 && end <= 100;
-
-    //Make sure user entered a valid range.
-    let isValidRange = start < end;
-
-    //Make sure user entries are valid.
-    if (isNumber && isPositive && isValidRange) {
-
-        let numbers = generateValues(start, end);
-        displayValues(numbers);
+        //Call function to display info.
+        displayValue(info);
     }
     else {
-
         //Show the alert box.
-        alert("Please make sure your entries are valid.");
+        alert("Please input a word, phrase, or sequence to check.");
     }
 }
 
-//Generate values within range entered by the user.
-function generateValues(start, end) {
+//Check if input is a palidrome.
+function isPalindrome(input) {
 
-    let numbers= []
+    //Length of the user's input.
+    let inputLen = input.length;
 
-    //Push all numbers (inclusive) from start to end.
-    for (let i = start; i <= end; i++) {
+    if (inputLen == 1) {
 
-        //Push all numbers to array.
-        numbers.push(i);
+        //Return info in a dictionary.
+        return {isPal: true, reverse: input};
     }
 
-    return numbers;
+    let reverse = "";
+
+    //Loop through characters and add to a new string.
+    for (let i = input.length-1; i >= 0; i--) {
+
+        reverse += input[i];
+    }
+
+    //Determine if user input is a palindrome.
+    let isPal = input.toLowerCase() == reverse.toLowerCase();
+
+    //Return info in a dictionary.
+    return {isPal: isPal, reverse: reverse};
 }
 
-//Display values within range entered by the user.
-function displayValues(numbers) {
-    
-    let templateValues = "";
-    
-    for (let i = 0; i < numbers.length; i++) {
+//Display the results.
+function displayValue(info) {
 
-        let number = numbers[i];
-        let cssClass = "odd";
+    //Get values from dictionary.
+    let isPal = info.isPal;
+    let reverse = info.reverse;
 
-        //Number is a multiple of ten.
-        if (number % 10 == 0) {
-            cssClass = "even multiple-of-ten";
-        }
-        //Number is even.
-        else if (number % 2 == 0) {
-            cssClass = "even";
-        }
+    //Use ternary operatory to initialize message.
+    message = isPal ? "Your entry is a Palindrome!" : 
+                      "Your entry is NOT a Palindrome!";
 
-        //Add template literals to string.
-        templateValues += `<tr><td class="${cssClass}">${number}</td></tr>`;
-    }
-    //Write values to the page.
-    document.getElementById("results").innerHTML = templateValues;
+    //Write to the page.
+    document.getElementById("ispal").innerHTML = message;
+    document.getElementById("info").innerHTML = `The reverse 
+                                of your entry is: ${reverse}`;
+
+    //Allow display message to be displayed.
+    document.getElementById("alert").classList.remove("invisible");
 }

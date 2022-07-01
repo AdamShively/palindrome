@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>c0untr: A Coding Project By Adam Shively</title>
+    <title>Madam, I'm AdaM: A Coding Project By Adam Shively</title>
     <!-- ==== Required meta tags ==== -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,20 +11,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="css/site.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/New Folder/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png">
 
-    <!-- ==== Google Fonts for Dosis font ==== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
     <!-- ==== Nav Section ==== -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand logofont" href="#"><img src="img/smalllogo.svg"  class=" d-inline-block align-text-center px-2"
-                    alt="Adam's logo" height="24">c0untr</a>
+            <a class="navbar-brand logofont" href="#"><img src="img/smalllogo.svg" class=" d-inline-block align-text-center px-2"
+                    alt="Adam's logo" height="24">Madam, I'm AdaM</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -54,39 +53,31 @@
     <main class="flex-shrink-0">
         <div class="container mt-5 py-5">
             <div class="row row-cols-1 row-cols-lg-2">
-                <div class="col col-lg-4"">
-                    <h1 class="lh-1 mb-3"> <span class="logofont">c0untr</span>: From Zero to 100</h1>
-                    <p>A javascript coding challenge that uses loops to display numbers 0 
-                        to 100. Even numbers are displayed in a <span class="even">BLUE</span> 
-                        font while odd numbers are displayed in a <span class="odd">RED</span>
-                        font. Numbers that are a multiple of 10 are displayed in 
-                        <span span style="font-weight: 1000;">BOLD</span> and are <span style="font-style: italic;">ITALIC</span>.
+                <div class="col">
+                    <h1 class="lh-1 mb-3"><span class="logofont">Madam, I'm AdaM</span> : A palindrome validator</h1>
+                    <p class="lead">A javascript coding challenge that uses loops to determine if an entry made by 
+                        the user is a valid palindrome. "Madam, I'm Adam" is a palindrome. A palindrome is a word, 
+                        phrase, or sequence that reads the same forwards as it does backwards. Non-alphanumeric 
+                        characters, such as commas, periods, and spaces, are excluded. The case of letters
+                        are ignored.
                     </p>
                     <h2 class="mt-5 border-bottom border-1">Instructions</h2>
-                    <p>Enter the starting and ending values. Press "Display Results" button to start.</p>
+                    <p>Enter the word, phrase, or sequence you would like to check for palindrome validity. 
+                        Press "Check It!" button to start.
+                    </p>
                 </div>
-                <div class="col col-lg-8 border-start">
-                    <div>
-                        <div col></div>
-                        <h4>Enter Values Below</h4>
-                        <form class="row gy-2 gx-3">
-                            <div class="col">
-                                <input id="start" type="number" class="form-control" placeholder="Starting Value" min=0 value=0 aria-label="Start Value">
-                            </div>
-                            <div class="col">
-                                <input id="end" type="number" class="form-control" placeholder="Ending Value" min=0 value=100 aria-label="End Value">
-                            </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <button id="submitbtn" type="button" class="btn btn-warning btn-large">Display Results</button>
-                            </div>
-                        </form>
-                        <h4 class="mt-5 border-bottom border-1">Results</h4>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-sm"> <!--sm tightens table resposive allows scroll-->
-                                <tbody id="results">
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="col">
+                    <h4 class="border-1 border-bottom border-primary">Enter Input Below</h4>
+                    <input id="input" type="text" class="form-control" placeholder="Your String Here"
+                        aria-label="Your String Here">
+                    <div class="col-12 d-flex justify-content-end mt-3">
+                        <button id="submitbtn" type="button" class="btn btn-danger btn-large">Check It!</button>
+                    </div>
+                    <div class="alert alert-danger mt-3 invisible fade show" id="alert" role="alert">
+                        <h4 class="alert-heading" id="ispal"></h4>
+                        <hr>
+                        <p class="mb-0" id="info">
+                        </p>
                     </div>
                 </div>
             </div>
@@ -126,7 +117,7 @@
     <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
 
     <script>
-        document.getElementById("submitbtn").addEventListener("click", getValues)
+        document.getElementById("submitbtn").addEventListener("click", getValue)
     </script>
 
 </body>

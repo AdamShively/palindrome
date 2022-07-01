@@ -11,13 +11,15 @@ main>.container {
 }
 
 :root {
-    --primary: #ff914d;
+    --primary: red;
     --secondary: rgb(222, 46, 33);
     --dark-color: rgb(66, 64, 64);
     --white-color: rgb(236, 233, 233);
 }
 
 body {
+    
+    font-family: 'Poppins', sans-serif;
     background-color:rgb(57, 61, 66);
     color: #FFFFFF80;
     /* rgba(0, 0, 0, 0.1);
@@ -56,6 +58,8 @@ footer .social>a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-weight:600;
+    font-family: 'Poppins', sans-serif;
     color: var(--primary);
 }
 
@@ -84,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logofont {
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 115%;
 }
 
