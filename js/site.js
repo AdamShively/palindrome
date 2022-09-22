@@ -19,7 +19,7 @@ function getValue() {
     }
     else {
         //Show the alert box.
-        alert("Please input a word, phrase, or sequence to check.");
+        alert("Please input a valid word, phrase, or sequence to check.");
     }
 }
 

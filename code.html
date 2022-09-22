@@ -41,10 +41,10 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="/adamshively.netlify.app">About</a>
+                        <a class="nav-link" target="_blank" href="https://adamshively.netlify.app/">My Website</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="/github.com/adamshively">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/AdamShively/palindrome">Git Repo</a>
                     </li>
                 </ul>
             </div>
@@ -78,7 +78,7 @@
                             }
                             else {
                                 //Show the alert box.
-                                alert("Please input a word, phrase, or sequence to check.");
+                                alert("Please input a valid word, phrase, or sequence to check.");
                             }
                         }
 
@@ -123,30 +123,30 @@
                 </div>
                 <div class="col-lg-5">
                     <h3 class="border-1 border-bottom mb-3">The Javascript Functions</h3>
-                    <h5 >The getValues Function:</h5>
-                    <p> This function gets the user's entries and initializes them to "start"
-                        and "end" then parses them to integers. Entries are then checked for validity
-                        using "isNumber", "isPositive", and "isValidRange". If the entries are valid
-                        then a function call of "generateValues" with "start" and "end" as arguements 
-                        is made and initialized to "numbers". The "displayValues" function is called with
-                        "numbers" passed as its arguement. If the user's entries were invalid, an alert 
-                        box is displayed telling the user to make sure the entries are valid.
+                    <h5 >The getValue Function:</h5>
+                    <p> This function gets the user's input and initializes it to "input". Any 
+                        invalid chararcters (non-alphanumeric characters) are removed using regex.
+                        The input is checked to make sure the user entered valid input and that
+                        it is still valid after removing all invalid characters. If it is, a function 
+                        call of "isPalindrome" is assigned to the "info" variable and then passed to
+                        the "displayValue" fuction. If it was not valid, an alert message is displayed
+                        telling the user to enter valid input.
                     </p>
-                    <h5 >The generateValues Function:</h5>
-                    <p>This function generates values within range entered by the user and
-                        pushes them to an array. It initializes the "numbers" array, loops through values 
-                        within range entered by the user and pushes them to that array, and 
-                        then returns that array.
+                    <h5 >The isPalindrome Function:</h5>
+                    <p>This function first initializes the "reverse" variable to an empty string. A reverse
+                        for loop then iterates through the user's input and adds each character to the
+                        "reverse" string. The user's input is then compared with the "reverse" string
+                        to see if they are equal. The comparison result is stored in the "isPal" variable.
+                        The "isPal" variable and the "reverse" string are returned in a dictonary object.
                     </p>
-                    <h5 >The displayValues Function:</h5>
-                    <p>This function displays the values within range entered by the user. The string 
-                        "templateValues" initialized and is used to collect values to be displayed. 
-                        The parameter "numbers" is looped through and its elements are intialized 
-                        to "number" and "cssClass" is initalized with each loop. If "number" is a 
-                        multiple of ten, "cssClass" is set to "even multiple-of-ten". If "number"
-                        is even, "cssClass" is set to "even". Otherwise, "cssClass" remains set to "odd".
-                        These values are added to "templateValues". Follwoing the loop, "templateValues" 
-                        is written to the page.
+                    <h5 >The displayValue Function:</h5>
+                    <p>This function displays the reverse of the user's input and whether or not 
+                        the user's input is a palindrome. The comparison result is stored in the 
+                        "isPal" variable and the reversed string stored in the "reverse" variable.
+                        A "message" variable is initalized with a message as to whether the user's 
+                        input is a palindrome or not. The contents of the "message" variable and 
+                        the reversed string are then written to the page. This is then made visible
+                        to the page.
                     </p>
                 </div>
             </div>
@@ -165,13 +165,11 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row ps-1">
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <div class="col social"><a href="https://www.linkedin.com/in/adam-shively-42162a239/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                        <div class="col social"><a href="https://github.com/AdamShively" target="_blank"><i class="fab fa-github fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
-                        </div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+                        <div class="col social"><a href="https://www.youtube.com/channel/UCoyDVmowhwAFrvyqU6p4w3w" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
                         </div>
                     </div>
                 </div>
